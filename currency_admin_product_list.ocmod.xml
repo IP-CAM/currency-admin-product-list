@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+   <name>Currency Symbol Admin Product List</name>
+   <code>currency_symbol_admin_product_list</code>
+   <version>2.3.0.2</version>
+   <link>https://wwww.free-time-info.com/en/</link>
+   <author>xxvirusxx</author>
+
+        <file path="admin/controller/catalog/product.php">
+            <operation>
+                <search><![CDATA[$special = $product_special['price'];]]></search>
+                <add position="replace"><![CDATA[$special = $this->currency->format($product_special['price'], $this->config->get('config_currency'));]]></add>
+            </operation>
+            <operation>
+                <search><![CDATA['price'      => $result['price'],]]></search>
+                <add position="replace"><![CDATA['price'      => $this->currency->format($result['price'], $this->config->get('config_currency')),]]></add>
+            </operation>
+        </file>
+</modification>
